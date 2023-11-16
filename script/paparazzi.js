@@ -1,7 +1,7 @@
 // url settings
 const url = /*'https://www.npmjs.com/package/puppeteer';*/ 'https://www.hannemaes.com/persistent/quartz/01/index.html?mode=light&ui=false';
 const imageName = 'quartz01';
-const imageWidth  = 1300;
+const imageWidth  = 1024;
 const imageHeight = 1024;
 
 // time settings
