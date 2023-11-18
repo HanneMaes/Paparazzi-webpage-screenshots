@@ -12,6 +12,7 @@ const intervalSeconds = 0;
 
 // technical settings
 const timeoutMinutes = 30; // how long the script waits for the page to load before aborting the script
+const waitBeforeScreenshotSeconds = 5; // wait after the page is loaded before taking a screenshot to be sure the page is fully loaded
 const runOnPi = true; // running this script on a PI needs some different options, like chromium instaed of chrome
 
 ///***********************************************************************************************************************************
@@ -39,6 +40,7 @@ async function takeScreenshot() {
     const page = await browser.newPage();
     await page.goto(url, { timeout: timeoutMinutes * 60 * 1000 }); // the default timeout is 30,000 milliseconds (30 seconds).when the timeout runs out before the page is laoded, no screenshot is taken. So we make the timeout bigger
     await page.setViewport({ width: imageWidth, height: imageHeight });
+    await page.waitForTimeout(waitBeforeScreenshotSeconds * 1000);
     await page.screenshot({
         path: imagePath,
         // fullPage: true, // true: capture the whole page, false: capture only the visible area
